@@ -1,0 +1,24 @@
+#!/bin/bash
+ruby convert_csv.rb csv/battleaxe.csv > db/seeds/tables/attacks/battleaxe.rb
+ruby convert_csv.rb csv/brawl.csv > db/seeds/tables/attacks/brawl.rb
+ruby convert_csv.rb csv/broadsword.csv > db/seeds/tables/attacks/broadsword.rb
+ruby convert_csv.rb csv/club.csv > db/seeds/tables/attacks/club.rb
+ruby convert_csv.rb csv/dagger.csv > db/seeds/tables/attacks/dagger.rb
+ruby convert_csv.rb csv/falchion.csv > db/seeds/tables/attacks/falchion.rb
+ruby convert_csv.rb csv/flail.csv > db/seeds/tables/attacks/flail.rb
+ruby convert_csv.rb csv/greatsword.csv > db/seeds/tables/attacks/greatsword.rb
+ruby convert_csv.rb csv/handaxe.csv > db/seeds/tables/attacks/handaxe.rb
+ruby convert_csv.rb csv/javelin.csv > db/seeds/tables/attacks/javelin.rb
+ruby convert_csv.rb csv/lance.csv > db/seeds/tables/attacks/lance.rb
+ruby convert_csv.rb csv/longsword.csv > db/seeds/tables/attacks/longsword.rb
+ruby convert_csv.rb csv/mace.csv > db/seeds/tables/attacks/mace.rb
+ruby convert_csv.rb csv/morningstar.csv > db/seeds/tables/attacks/morningstar.rb
+ruby convert_csv.rb csv/quarterstaff.csv > db/seeds/tables/attacks/quarterstaff.rb
+ruby convert_csv.rb csv/rapier.csv > db/seeds/tables/attacks/rapier.rb
+ruby convert_csv.rb csv/scimitar.csv > db/seeds/tables/attacks/scimitar.rb
+ruby convert_csv.rb csv/shortbow.csv > db/seeds/tables/attacks/shortbow.rb
+ruby convert_csv.rb csv/shortsword.csv > db/seeds/tables/attacks/shortsword.rb
+ruby convert_csv.rb csv/spear.csv > db/seeds/tables/attacks/spear.rb
+ruby convert_csv.rb csv/stiletto.csv > db/seeds/tables/attacks/stiletto.rb
+ruby convert_csv.rb csv/warhammer.csv > db/seeds/tables/attacks/warhammer.rb
+ruby convert_csv.rb csv/warmattock.csv > db/seeds/tables/attacks/warmattock.rb
