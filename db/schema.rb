@@ -78,13 +78,13 @@ ActiveRecord::Schema.define(version: 20160101090000) do
 
   create_table "attribute_sets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "character_id", null: false
-    t.integer "str", null: false
-    t.integer "con", null: false
-    t.integer "agi", null: false
-    t.integer "dex", null: false
-    t.integer "int", null: false
-    t.integer "wil", null: false
-    t.integer "pow", null: false
+    t.integer "str", default: 50, null: false
+    t.integer "con", default: 50, null: false
+    t.integer "agi", default: 50, null: false
+    t.integer "dex", default: 50, null: false
+    t.integer "int", default: 50, null: false
+    t.integer "wil", default: 50, null: false
+    t.integer "pow", default: 50, null: false
     t.index ["character_id"], name: "index_attribute_sets_on_character_id"
   end
 
@@ -423,57 +423,57 @@ ActiveRecord::Schema.define(version: 20160101090000) do
 
   create_table "skill_sets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "character_id", null: false
-    t.integer "heavy_armor", null: false
-    t.integer "medium_armor", null: false
-    t.integer "light_armor", null: false
-    t.integer "light_edge", null: false
-    t.integer "medium_edge", null: false
-    t.integer "heavy_edge", null: false
-    t.integer "light_pierce", null: false
-    t.integer "medium_pierce", null: false
-    t.integer "heavy_pierce", null: false
-    t.integer "light_blunt", null: false
-    t.integer "medium_blunt", null: false
-    t.integer "heavy_blunt", null: false
-    t.integer "missile_weaponry", null: false
-    t.integer "martial", null: false
-    t.integer "athletics", null: false
-    t.integer "plate", null: false
-    t.integer "scale", null: false
-    t.integer "chain", null: false
-    t.integer "soft_leather", null: false
-    t.integer "rigid_leather", null: false
-    t.integer "dagger", null: false
-    t.integer "shortsword", null: false
-    t.integer "longsword", null: false
-    t.integer "broadsword", null: false
-    t.integer "falchion", null: false
-    t.integer "handaxe", null: false
-    t.integer "scimitar", null: false
-    t.integer "battleaxe", null: false
-    t.integer "greatsword", null: false
-    t.integer "quarterstaff", null: false
-    t.integer "warhammer", null: false
-    t.integer "club", null: false
-    t.integer "mace", null: false
-    t.integer "morningstar", null: false
-    t.integer "flail", null: false
-    t.integer "warmattock", null: false
-    t.integer "rapier", null: false
-    t.integer "stiletto", null: false
-    t.integer "javelin", null: false
-    t.integer "spear", null: false
-    t.integer "lance", null: false
-    t.integer "shortbow", null: false
-    t.integer "longbow", null: false
-    t.integer "crossbow", null: false
-    t.integer "block", null: false
-    t.integer "parry", null: false
-    t.integer "dual_wield", null: false
-    t.integer "throw", null: false
-    t.integer "brawl", null: false
-    t.integer "body_development", null: false
-    t.integer "dodge", null: false
+    t.integer "heavy_armor", default: 8, null: false
+    t.integer "medium_armor", default: 8, null: false
+    t.integer "light_armor", default: 8, null: false
+    t.integer "light_edge", default: 8, null: false
+    t.integer "medium_edge", default: 8, null: false
+    t.integer "heavy_edge", default: 8, null: false
+    t.integer "light_pierce", default: 8, null: false
+    t.integer "medium_pierce", default: 8, null: false
+    t.integer "heavy_pierce", default: 8, null: false
+    t.integer "light_blunt", default: 8, null: false
+    t.integer "medium_blunt", default: 8, null: false
+    t.integer "heavy_blunt", default: 8, null: false
+    t.integer "missile_weaponry", default: 8, null: false
+    t.integer "martial", default: 8, null: false
+    t.integer "athletics", default: 8, null: false
+    t.integer "plate", default: 8, null: false
+    t.integer "scale", default: 8, null: false
+    t.integer "chain", default: 8, null: false
+    t.integer "soft_leather", default: 8, null: false
+    t.integer "rigid_leather", default: 8, null: false
+    t.integer "dagger", default: 8, null: false
+    t.integer "shortsword", default: 8, null: false
+    t.integer "longsword", default: 8, null: false
+    t.integer "broadsword", default: 8, null: false
+    t.integer "falchion", default: 8, null: false
+    t.integer "handaxe", default: 8, null: false
+    t.integer "scimitar", default: 8, null: false
+    t.integer "battleaxe", default: 8, null: false
+    t.integer "greatsword", default: 8, null: false
+    t.integer "quarterstaff", default: 8, null: false
+    t.integer "warhammer", default: 8, null: false
+    t.integer "club", default: 8, null: false
+    t.integer "mace", default: 8, null: false
+    t.integer "morningstar", default: 8, null: false
+    t.integer "flail", default: 8, null: false
+    t.integer "warmattock", default: 8, null: false
+    t.integer "rapier", default: 8, null: false
+    t.integer "stiletto", default: 8, null: false
+    t.integer "javelin", default: 8, null: false
+    t.integer "spear", default: 8, null: false
+    t.integer "lance", default: 8, null: false
+    t.integer "shortbow", default: 8, null: false
+    t.integer "longbow", default: 8, null: false
+    t.integer "crossbow", default: 8, null: false
+    t.integer "block", default: 8, null: false
+    t.integer "parry", default: 8, null: false
+    t.integer "dual_wield", default: 8, null: false
+    t.integer "throw", default: 8, null: false
+    t.integer "brawl", default: 8, null: false
+    t.integer "body_development", default: 8, null: false
+    t.integer "dodge", default: 8, null: false
     t.index ["character_id"], name: "index_skill_sets_on_character_id"
   end
 

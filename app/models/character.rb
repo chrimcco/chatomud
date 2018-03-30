@@ -4,6 +4,8 @@ class Character < ApplicationRecord
 
   extend ChatoMud::Mixins::Characters::Genders::Definition
 
+  before_validation :set_default_associations, on: :create
+
   scope :pcs, -> { where(npc: false) }
 
   scope :npcs, -> { where(npc: true) }
@@ -63,6 +65,14 @@ class Character < ApplicationRecord
 
   def is_npc?
     npc
+  end
+
+  def set_default_associations
+    self.health        = Health.new
+    self.inventory     = Inventory.new
+    self.attribute_set = AttributeSet.new
+    self.skill_set     = SkillSet.new    
+    self.choice        = Choice.new
   end
 
 end

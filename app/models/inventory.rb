@@ -2,7 +2,7 @@ class Inventory < ApplicationRecord
 
   has_one :lid, dependent: :destroy
 
-  belongs_to :parent, polymorphic: true, validate: true
+  belongs_to :parent, polymorphic: true
 
   has_many :items, dependent: :destroy, foreign_key: 'containing_inventory_id'
 

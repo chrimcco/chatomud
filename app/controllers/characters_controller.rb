@@ -12,6 +12,8 @@ class CharactersController < ApplicationController
   def create
     character = Character.new(character_params)
 
+    character.room_id = Room.first.id
+
     if character.save!
       render json: character
     else
@@ -31,7 +33,13 @@ class CharactersController < ApplicationController
 
   def character_params
     params.require(:character).permit(
-      :short_desc
+      :name,
+      :short_desc,
+      :long_desc,
+      :full_desc,
+      :active,
+      :player_id,
+      kwords: []
     )
   end
 
