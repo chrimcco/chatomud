@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   post '/players', to: 'players#create', defaults: { format: :json }
   post '/players/authenticate', defaults: { format: :json }
 
+  get '/characters/yours', defaults: { format: :json }
+
   resources :rooms, only: [:index], defaults: { format: :json }
   
   resources :items, only: [:index, :create, :update, :destroy], defaults: { format: :json }
