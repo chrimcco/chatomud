@@ -309,6 +309,8 @@ ActiveRecord::Schema.define(version: 20160101090000) do
   create_table "players", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "username", null: false
     t.string "password_digest", null: false
+    t.string "authentication_token", null: false
+    t.index ["authentication_token"], name: "index_players_on_authentication_token", unique: true
   end
 
   create_table "protections", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

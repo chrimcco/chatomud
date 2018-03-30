@@ -1,5 +1,7 @@
 class AddForeignKeys < ActiveRecord::Migration[5.1]
   def change
+    add_index :players, :authentication_token, :unique => true
+
     add_foreign_key :settings, :players, on_delete: :cascade
 
     add_foreign_key :rooms, :rooms, column: :nr_id,  on_delete: :restrict

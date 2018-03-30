@@ -1,30 +1,30 @@
 Player.create!(
-  username: 'gat',
-  password: 'perdut',
+  username: 'tulkas',
+  password: 'tulkas',
   setting: Setting.new(
     ansi_coloring: true
   )
 )
 
 Player.create!(
-  username: 'chat',
-  password: 'noir',
+  username: 'faroukel',
+  password: 'faroukel',
   setting: Setting.new(
     ansi_coloring: true
   )
 )
 
 Player.create!(
-  username: 'sick',
-  password: 's1ck',
+  username: 'smca',
+  password: 'smca',
   setting: Setting.new(
     ansi_coloring: false
   )
 )
 
 Player.create!(
-  username: 'seenmy',
-  password: 'corpse',
+  username: 'someone',
+  password: 'someone',
   setting: Setting.new(
     ansi_coloring: true
   )

@@ -1,9 +1,9 @@
 Character.create!(
-  name: 'Asinius',
-  short_desc: 'an immoderately tall man',
-  long_desc: 'An immoderately tall man stands here.',
-  full_desc: 'This man is immoderate!',
-  kwords: ['asinius', 'immoderately', 'tall', 'man'],
+  name: 'Gunnbjorn',
+  short_desc: 'a strapping man with a blond beard',
+  long_desc: 'A strapping man with a blond beard is here.',
+  full_desc: 'This is Gunns full description.',
+  kwords: ['gunnbjorn', 'strapping', 'strapping', 'man'],
   gender: :male,
   active: true,
   player: Player.find(1),
@@ -105,12 +105,12 @@ Character.create!(
 )
 
 Character.create!(
-  name: 'Nissah',
-  short_desc: 'a night-haired, coal-eyed woman',
-  long_desc: 'A night-haired, coal-eyed woman is present.',
-  full_desc: 'Black all over!',
-  kwords: ['nissah', 'night-haired', 'coal-eyed', 'woman'],
-  gender: :female,
+  name: 'Irzan',
+  short_desc: 'an olive-toned man with a pointy beard',
+  long_desc: 'An olive-toned man with a pointy beard is here.',
+  full_desc: 'This is Irzans description.',
+  kwords: ['irzan', 'olive-toned', 'pointy', 'beard', 'man'],
+  gender: :male,
   active: true,
   player: Player.find(2),
   room: Room.find(1),
@@ -206,12 +206,12 @@ Character.create!(
 )
 
 Character.create!(
-  name: 'Carlos',
-  short_desc: 'a rather nerdy-looking guy',
-  long_desc: 'A rather nerdy-looking guy is around.',
-  full_desc: 'Hair mess, thick-framed glasses...yup, that must be Carlos.',
-  kwords: ['carlos', 'rather', 'nerdy-looking', 'guy'],
-  gender: :male,
+  name: 'Shianek',
+  short_desc: 'an able-boded woman with knife-cropped hair',
+  long_desc: 'An able-bodied woman with knife-cropped hair is here.',
+  full_desc: 'This is Shianeks description.',
+  kwords: ['shianek', 'able-bodied', 'knife-cropped', 'woman'],
+  gender: :female,
   active: true,
   player: Player.find(3),
   room: Room.find(3),

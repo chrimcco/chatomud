@@ -1,4 +1,6 @@
 class Player < ApplicationRecord
+  before_create :generate_authentication_token
+
 
   has_one :setting, dependent: :destroy
 
@@ -19,11 +21,24 @@ class Player < ApplicationRecord
   validates_associated :setting, :characters
 
 
+  accepts_nested_attributes_for :setting
+
   def current_character
     characters.find_by_active(true)
   end
 
+
   private
+
+  def generate_authentication_token
+    loop do
+      token = Devise.friendly_token
+
+      self.authentication_token = token
+
+      break if self.class.where(authentication_token: token).count.zero?
+    end
+  end
 
   def max_one_active_character
     if characters.select { |character| character.active }.count > 1

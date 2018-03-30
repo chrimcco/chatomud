@@ -34,8 +34,7 @@ module ChatoMud
                   melee_weapon_controller = melee_offensive_capability[:melee_weapon_controller]
 
                   melee_weapon_controller_short_desc = melee_weapon_controller ? melee_weapon_controller.short_desc : 'fists'
-
-                  "#{melee_weapon_controller_short_desc} (#{melee_offensive_capability[:skill]}) (#{melee_offensive_capability[:modifier]})"
+                  "#{melee_weapon_controller_short_desc} (#{melee_offensive_capability[:skill_name]}) (#{melee_offensive_capability[:modifier]})"
                 end.join(", ")
               end
 
