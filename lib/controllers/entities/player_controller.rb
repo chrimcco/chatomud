@@ -154,7 +154,7 @@ module ChatoMud
           @character_controller.bye
           @character_controller = nil
           @state = :main_menu
-          tx(show_prompt)
+          tx("You leave the area ...\n")
         end
 
         def show_prompt
