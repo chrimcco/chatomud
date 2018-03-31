@@ -16,7 +16,7 @@ module ChatoMud
         end
    
         def long_desc
-          if combat_controller.is_attacking?
+          text = if combat_controller.is_attacking?
             short_desc + " is here, fighting " + combat_controller.target.short_desc + "."
           elsif !health_controller.is_conscious?
             short_desc + " is lying here, unconscious."
@@ -46,6 +46,8 @@ module ChatoMud
           else
             model.long_desc.magenta
           end
+
+          text + link_dead_flag
         end
 
         def full_desc(gender)
@@ -53,6 +55,10 @@ module ChatoMud
           text << "#{list_inventory(gender)}"
           text << "#{list_wounds(gender)}"
           text
+        end
+
+        def link_dead_flag
+          @entity_controller.is_waiting_for_reconnection? ? " <link dead>" : ""
         end
 
       end

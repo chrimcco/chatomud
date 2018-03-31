@@ -186,6 +186,7 @@ module ChatoMud
         def handle_disconnection
           close_socket
           if is_in_game?
+            @character_controller.emit_disconnection
             wait_for_reconnection
           else
             bye(false)
@@ -197,9 +198,12 @@ module ChatoMud
           puts self.to_s + " now sleeping ..."
           sleep(10.seconds)
           if @waiting_for_reconnection
+            puts self.to_s + " link dead too long."
             bye(true)
           end
           tx("Welcome back, #{@player.username}.\n")
+          @character_controller.emit_reconnection
+          puts self.to_s + " has reconnected."
           Actions::LookAround.new(@server, @character_controller, nil).exec
         end
 

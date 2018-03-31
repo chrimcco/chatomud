@@ -38,6 +38,10 @@ module ChatoMud
           end
         end
 
+        def is_waiting_for_reconnection?
+          false
+        end
+
         def show_prompt
           #
         end

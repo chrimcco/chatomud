@@ -127,12 +127,18 @@ module ChatoMud
           @entity_controller.tx(message, vessel) if @entity_controller # npc being instantiated e.g.
         end
 
-        # move these 2 guys to the echoes?
+        # move these guys to the echoes?
         def emit_enter_area
           @room_controller.emit_echo(self, "#{short_desc} enters the area.")
         end
         def emit_leave_area
           @room_controller.emit_echo(self, "#{short_desc} leaves the area.")
+        end
+        def emit_disconnection
+          @room_controller.emit_echo(self, "#{short_desc} has lost connection.")
+        end
+        def emit_reconnection
+          @room_controller.emit_echo(self, "#{short_desc} has reconnected.")
         end
 
         def show_room
