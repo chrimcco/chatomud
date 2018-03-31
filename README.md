@@ -1,9 +1,4 @@
-## README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+## Chatomud
 
 * Ruby version
 
@@ -21,4 +16,16 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+sudo apt-get install mysql-server
+sudo apt-get install ruby-dev
+sudo apt-get install mysql-client libmysqlclient-dev
+(how to autoset root password?)
+
+mysql -u root -p t00r
+
+bundle exec rails s
+
+
+
+gem install haml
+

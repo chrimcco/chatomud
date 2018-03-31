@@ -24,7 +24,7 @@ module ChatoMud
 
         return unless check_is_unlocked(item_controller.inventory_controller.lid_controller.lock_controller, "#{item_controller.short_desc} is already locked.")
 
-        lockers = @character_controller.inventory_controller.lockers_for(item_controller.lock_controller)
+        lockers = @character_controller.inventory_controller.lockers_for(item_controller.inventory_controller.lid_controller.lock_controller)
 
         return unless check_count_is_positive(lockers, "You are not holding anything capable of locking #{item_controller.short_desc}.")
 
