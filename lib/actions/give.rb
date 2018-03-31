@@ -21,7 +21,7 @@ module ChatoMud
 
         receiver_character_controller = @character_controller.search_character_controller(receiver)
 
-        return unless check_target_present(receiver_character_controller, "Who do you want to give #{item_controllers.short_desc} to?")
+        return unless check_target_present(receiver_character_controller, "Who do you want to give #{item_controller.short_desc} to?")
 
         return unless check_no_equality(@character_controller, receiver_character_controller, "You cannot target yourself.")
 
