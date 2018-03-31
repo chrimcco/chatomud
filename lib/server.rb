@@ -103,6 +103,11 @@ module ChatoMud
       loop do
         begin
           player_socket = @tcp_server.accept.extend CMSocket
+          # Would likely need to check these values... overkill?
+          player_socket.setsockopt(Socket::SOL_SOCKET, Socket::SO_KEEPALIVE, true)
+          player_socket.setsockopt(Socket::SOL_TCP, Socket::TCP_KEEPIDLE, 2)
+          player_socket.setsockopt(Socket::SOL_TCP, Socket::TCP_KEEPINTVL, 2)
+          player_socket.setsockopt(Socket::SOL_TCP, Socket::TCP_KEEPCNT, 2)
         rescue IOError
           Rails.logger.info("ChatoMud server stopped listening.")
           return
