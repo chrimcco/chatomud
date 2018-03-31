@@ -28,7 +28,7 @@ module ChatoMud
 
               text
             else
-              puts("WRONG STATE WHEN SHOWING MAIN MENU PROMPT")
+              Rails.logger.error("Wrong state when showing main menu prompt.")
           end
         end
 

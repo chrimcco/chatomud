@@ -44,6 +44,7 @@ module ChatoMud
           tx("Chato Mud\n") # ASCII art here
           loop do
             rx_result, input = @socket.rx
+
             case rx_result
               when :bad
                 handle_disconnection
@@ -80,6 +81,7 @@ module ChatoMud
         end
 
         def close_socket
+          Rails.logger.info("Closing socket.")
           @socket.close
         end
 
@@ -204,15 +206,15 @@ module ChatoMud
 
         def wait_for_reconnection
           @waiting_for_reconnection = true
-          puts self.to_s + " now sleeping ..."
+          Rails.logger.warn("#{@player.username} disconnected. Thread sleeping ...")
           sleep(10.seconds)
           if @waiting_for_reconnection
-            puts self.to_s + " link dead too long."
+            Rails.logger.warn("#{@player.username}'s link dead too long. Closing connection.")
             bye(true)
           end
           tx("Welcome back, #{@player.username}.\n")
           @character_controller.emit_reconnection
-          puts self.to_s + " has reconnected."
+          Rails.logger.warn("#{@player.username} has reconnected.")
           Actions::LookAround.new(@server, @character_controller, nil).exec
         end
 

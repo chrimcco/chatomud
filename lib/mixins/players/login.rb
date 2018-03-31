@@ -13,7 +13,7 @@ module ChatoMud
             when :providing_password
               return "Your password? 'exit' to quit."
             else
-              puts("WRONG STATE WHEN SHOWING LOGIN PROMPT")
+              Rails.logger.error("Wrong state when showing login prompt.")
           end
         end
 
