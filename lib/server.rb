@@ -89,7 +89,7 @@ module ChatoMud
     def initialize
       Rails.logger.info("ChatoMud listening port 1234.")
       Rails.logger.info("Environment: #{Rails.env.to_s}".red)
-      @server_socket = TCPServer.new(1234)
+      @tcp_server = TCPServer.new(1234)
       initialize_referrers
       initialize_handlers
       initialize_spawners
@@ -102,7 +102,7 @@ module ChatoMud
       Rails.logger.info("ChatoMud listening now.")
       loop do
         begin
-          player_socket = @server_socket.accept.extend CMSocket
+          player_socket = @tcp_server.accept.extend CMSocket
         rescue IOError
           Rails.logger.info("ChatoMud server stopped listening.")
           return
@@ -114,7 +114,7 @@ module ChatoMud
     def bye
       terminate_handlers
       terminate_timers_assistant
-      @server_socket.close
+      @tcp_server.close
       Rails.logger.info("ChatoMud server shutdown.")
       Thread.current.terminate
     end

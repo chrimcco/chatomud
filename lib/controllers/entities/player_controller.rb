@@ -43,7 +43,12 @@ module ChatoMud
         def process
           tx("Chato Mud\n") # ASCII art here
           loop do
-            rx_result, input = @socket.rx
+            rx_result = :bad
+            begin
+              rx_result, input = @socket.rx
+            rescue Exception
+              # Empty
+            end
 
             case rx_result
               when :bad

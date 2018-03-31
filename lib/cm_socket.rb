@@ -9,10 +9,12 @@ module ChatoMud
     end
 
     def tx(message)
-      return if closed?
-
-      self << "#{message}\n\0"
-      flush
+      begin
+        self << "#{message}\n\0"
+        flush
+      rescue Errno::EPIPE
+        # Empty
+      end
     end
 
     def human_address
