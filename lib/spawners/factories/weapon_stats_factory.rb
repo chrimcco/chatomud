@@ -14,8 +14,8 @@ module ChatoMud
           weapon_stat_attributes = weapon_stat_template.attributes.symbolize_keys.except(:id, :created_at, :updated_at, :item_template_id)
           weapon_stat = WeaponStat.new(weapon_stat_attributes)
 
-          weapon_stat.melee_stat  = @server.melee_stats_factory.instantiate(weapon_stat_template.melee_stat_template)
-          weapon_stat.ranged_stat = @server.ranged_stats_factory.instantiate(weapon_stat_template.ranged_stat_template)
+          weapon_stat.melee_stat  = @server.melee_stats_factory.instantiate(weapon_stat_template.melee_stat_template) if weapon_stat_template.melee_stat_template
+          weapon_stat.ranged_stat = @server.ranged_stats_factory.instantiate(weapon_stat_template.ranged_stat_template) if weapon_stat_template.ranged_stat_template
 
           weapon_stat
         end
