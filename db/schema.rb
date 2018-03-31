@@ -470,7 +470,7 @@ ActiveRecord::Schema.define(version: 20160101090000) do
     t.integer "block", default: 8, null: false
     t.integer "parry", default: 8, null: false
     t.integer "dual_wield", default: 8, null: false
-    t.integer "throw", default: 8, null: false
+    t.integer "throwing", default: 8, null: false
     t.integer "brawl", default: 8, null: false
     t.integer "body_development", default: 8, null: false
     t.integer "dodge", default: 8, null: false

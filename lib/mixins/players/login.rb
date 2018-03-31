@@ -41,10 +41,11 @@ module ChatoMud
           case @server.entities_handler.check_duplicate(self, socket)
             when :not_duplicate
               @state = :main_menu
+              create_logger
               tx("Welcome, #{@player.username}.\n")
             when :multilogin
               tx("That account is already logged in. This has been reported ...")
-              log.warn("Double authentication attempt for #{@player.username} from #{@socket.human_address}")
+              Rails.logger.warn("Double authentication attempt for #{@player.username} from #{@socket.human_address}")
               bye(true)
             when :reconnection
               bye(false)
@@ -57,6 +58,7 @@ module ChatoMud
             tx('Wrong password.')
           else
             tx('Wrong password for the third time. This has been reported ...')
+            Rails.logger.warn("Three failed password attempts on #{@player.username} from #{@socket.human_address}")
             bye(true)
           end
         end

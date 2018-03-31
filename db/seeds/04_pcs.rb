@@ -96,7 +96,7 @@ Character.create!(
     block: 8,
     parry: 11,
     dual_wield: 5,
-    throw: 3,
+    throwing: 3,
 
     brawl: 4,
     body_development: 13,
@@ -197,7 +197,7 @@ Character.create!(
     block: 8,
     parry: 11,
     dual_wield: 17,
-    throw: 3,
+    throwing: 3,
 
     brawl: 4,
     body_development: 17,
@@ -298,7 +298,7 @@ Character.create!(
     block: 3,
     parry: 7,
     dual_wield: 0,
-    throw: 19,
+    throwing: 19,
 
     brawl: 1,
     body_development: 8,

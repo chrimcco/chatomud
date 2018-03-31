@@ -41,7 +41,7 @@ module ChatoMud
       end
 
       def add_player_controller(socket)
-        log.info("New connection from #{socket.human_address}")
+        Rails.logger.info("New connection from #{socket.human_address}")
         Thread.new(@server, socket) do |server, socket|
           player_controller = Controllers::Entities::PlayerController.new(server, Thread.current, socket)
           player_controller.process
@@ -49,7 +49,7 @@ module ChatoMud
       end
 
       def add_bot_controller(npc_controller)
-        log.info("Loading bot.")
+        Rails.logger.info("Loading bot.")
         Thread.new(@server, npc_controller) do |server, npc_controller|
           bot_controller = Controllers::Entities::BotController.new(server, Thread.current, npc_controller)
           bot_controller.process

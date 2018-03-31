@@ -18,6 +18,9 @@ module ChatoMud
 
         def initialize(server, thread, socket)
           super(server, thread)
+
+          @logger = nil
+
           @socket = socket
           @state = :providing_username
           @waiting_for_reconnection = false
@@ -81,6 +84,8 @@ module ChatoMud
         end
 
         def tx(message, vessel = false)
+          log(message.uncolorize)
+
           message = message.uncolorize unless player_available? && @player.setting.ansi_coloring
 
           # here vessel means 'intended only for the vessel'
@@ -175,6 +180,10 @@ module ChatoMud
           end
         end
 
+        def log(content)
+          @logger.info(content) unless @logger.nil?
+        end
+
         private
         
         def handle_enter_game
@@ -205,6 +214,11 @@ module ChatoMud
           @character_controller.emit_reconnection
           puts self.to_s + " has reconnected."
           Actions::LookAround.new(@server, @character_controller, nil).exec
+        end
+
+        def create_logger
+          @logger = ::Logger.new("log/#{Rails.env}/players/#{@player.username}.log")
+          @logger.level = 1
         end
 
       end

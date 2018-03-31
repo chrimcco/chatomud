@@ -20,12 +20,12 @@ module ChatoMud
       end
 
       def add_character_controller(character_controller)
-        log.info("Adding character to main list.")
+        Rails.logger.info("Adding character to main list.")
         @character_controllers << character_controller
       end
 
       def remove_character_controller(character_controller)
-        log.info("Removing character from main list.")
+        Rails.logger.info("Removing character from main list.")
         @character_controllers.delete(character_controller)
       end
 

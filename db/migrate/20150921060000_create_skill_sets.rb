@@ -93,7 +93,7 @@ class CreateSkillSets < ActiveRecord::Migration[5.1]
       t.integer :block, null: false, default: 8
       t.integer :parry, null: false, default: 8
       t.integer :dual_wield, null: false, default: 8
-      t.integer :throw, null: false, default: 8
+      t.integer :throwing, null: false, default: 8
 
       # Athletics
       t.integer :brawl, null: false, default: 8

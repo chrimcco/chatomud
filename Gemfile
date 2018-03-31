@@ -37,23 +37,10 @@ gem 'stopwords-filter', require: 'stopwords'
 
 gem 'facets', '~> 3.1.0', require: false
 
+gem 'net-telnet', '~> 0.1.1'
 
-group :test do
+gem 'byebug', '~> 9.0.5'
 
-end
+gem 'spring', '~> 1.7.2'
 
-group :development, :test do
-  gem 'net-telnet', '~> 0.1.1'
-
-  gem 'byebug', '~> 9.0.5'
-end
-
-group :development do
-  gem 'spring', '~> 1.7.2'
-
-  gem 'yard', '~> 0.8.7.6'
-end
-
-group :development, :production do
-  gem 'yell', '~> 2.0.6'
-end
+gem 'yard', '~> 0.8.7.6'

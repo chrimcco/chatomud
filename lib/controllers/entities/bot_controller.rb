@@ -54,6 +54,10 @@ module ChatoMud
           true
         end
 
+        def log(content)
+          # Empty
+        end
+
       end
 
     end

@@ -15,6 +15,7 @@ module ChatoMud
       end
 
       def exec(command)
+        @character_controller.entity_controller.log(command)
         if is_possessed?
           handle_command_while_possessed(command)
           return

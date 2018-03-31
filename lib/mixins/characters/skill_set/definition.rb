@@ -122,7 +122,7 @@ module ChatoMud
               :parry,
               :block,
               :dual_wield,
-              :throw
+              :throwing
             ]
           end
 

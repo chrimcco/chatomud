@@ -59,7 +59,7 @@ Skill.create!(name: :crossbow,         skill_category: :missile_weaponry,  depen
 Skill.create!(name: :block,            skill_category: :martial,           dependencies: [:str, :dex, :wil])
 Skill.create!(name: :parry,            skill_category: :martial,           dependencies: [:dex, :agi, :int])
 Skill.create!(name: :dual_wield,       skill_category: :martial,           dependencies: [:dex, :dex, :int])
-Skill.create!(name: :throw,            skill_category: :martial,           dependencies: [:agi, :dex, :dex])
+Skill.create!(name: :throwing,         skill_category: :martial,           dependencies: [:agi, :dex, :dex])
 
 # Body capabilities
 Skill.create!(name: :body_development, skill_category: :athletics,         dependencies: [:con, :con, :pow])

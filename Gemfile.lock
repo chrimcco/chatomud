@@ -134,7 +134,6 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
     yard (0.8.7.6)
-    yell (2.0.6)
 
 PLATFORMS
   ruby
@@ -156,7 +155,6 @@ DEPENDENCIES
   spring (~> 1.7.2)
   stopwords-filter
   yard (~> 0.8.7.6)
-  yell (~> 2.0.6)
 
 BUNDLED WITH
    1.15.4

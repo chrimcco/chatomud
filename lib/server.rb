@@ -2,8 +2,6 @@ require 'require_all'
 
 require 'socket'
 
-require 'logger_factory'
-
 require 'handlers/rooms_handler'
 require 'handlers/items_handler'
 require 'handlers/furnitures_handler'
@@ -45,8 +43,6 @@ require 'timers/timers_assistant'
 require 'cm_socket'
 
 module ChatoMud
-
-  log = nil
 
   class Server
 
@@ -91,9 +87,8 @@ module ChatoMud
     attr_reader :timers_assistant
 
     def initialize
-      log = LoggerFactory.create_mud_server_logger
-      log.info("ChatoMud listening port 1234.")
-      log.info("Environment: #{Rails.env.to_s}".red)
+      Rails.logger.info("ChatoMud listening port 1234.")
+      Rails.logger.info("Environment: #{Rails.env.to_s}".red)
       @server_socket = TCPServer.new(1234)
       initialize_referrers
       initialize_handlers
@@ -104,12 +99,12 @@ module ChatoMud
     end
 
     def listen
-      log.info("ChatoMud listening now.")
+      Rails.logger.info("ChatoMud listening now.")
       loop do
         begin
           player_socket = @server_socket.accept.extend CMSocket
         rescue IOError
-          log.info("ChatoMud server stopped listening.")
+          Rails.logger.info("ChatoMud server stopped listening.")
           return
         end
         @entities_handler.add_player_controller(player_socket)
@@ -120,14 +115,14 @@ module ChatoMud
       terminate_handlers
       terminate_timers_assistant
       @server_socket.close
-      log.info("ChatoMud server shutdown.")
+      Rails.logger.info("ChatoMud server shutdown.")
       Thread.current.terminate
     end
 
     private
 
     def initialize_handlers
-      log.info("Instantiating handlers.")
+      Rails.logger.info("Instantiating handlers.")
       @rooms_handler = Handlers::RoomsHandler.new(self)
       @items_handler = Handlers::ItemsHandler.new(self)
       @furnitures_handler = Handlers::FurnituresHandler.new(self)
@@ -147,7 +142,7 @@ module ChatoMud
     end
 
     def initialize_factories
-      log.info("Initializing factories.")
+      Rails.logger.info("Initializing factories.")
       @characters_factory = Spawners::Factories::CharactersFactory.new(self)
       @attribute_sets_factory = Spawners::Factories::AttributeSetsFactory.new(self)
       @skill_sets_factory = Spawners::Factories::SkillSetsFactory.new(self)
@@ -164,7 +159,7 @@ module ChatoMud
     end
 
     def initialize_outfitters
-      log.info("Initializing outfitters.")
+      Rails.logger.info("Initializing outfitters.")
       @characters_outfitter = Spawners::Outfitters::CharactersOutfitter.new(self)
       @items_outfitter = Spawners::Outfitters::ItemsOutfitter.new(self)
     end

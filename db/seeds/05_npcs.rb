@@ -90,7 +90,7 @@ Character.create!(
     block: 13,
     parry: 14,
     dual_wield: 10,
-    throw: 9,
+    throwing: 9,
 
     brawl: 8,
     body_development: 17,

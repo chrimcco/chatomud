@@ -7,8 +7,8 @@ RSpec.describe ChatoMud::Grammar::Parser do
   let(:queries) {
     [
       ['set', { set: '' }],
-      ['   se', { set: '' }],
-      [' se      ', { set: '' }]
+      ['   set', { set: '' }],
+      [' set      ', { set: '' }]
     ]
   }
 
