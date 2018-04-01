@@ -11,7 +11,6 @@ class ItemTemplatesController < ApplicationController
 
   def create
     item_template = ItemTemplate.new(item_template_params)
-
     if item_template.save!
       render json: item_template
     else
@@ -30,7 +29,10 @@ class ItemTemplatesController < ApplicationController
       :short_desc,
       :long_desc,
       :full_desc,
-      kwords: []
+      inventory_template_attributes: [
+        :parent_type
+      ],
+      kwords: [],
     )
   end
 

@@ -58,6 +58,9 @@ class ItemTemplate < ApplicationRecord
 
   validates_associated :weapon_stat_template, :missile_stat_template, :armor_stat_template, :shield_stat_template, :stack, :food, :drink, :inventory_template, :items
 
+
+  accepts_nested_attributes_for :inventory_template
+
   private
 
   def is_weapon_template?
