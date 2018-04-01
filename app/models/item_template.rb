@@ -1,8 +1,11 @@
 require 'mixins/slots/definition'
+require 'securerandom'
 
 class ItemTemplate < ApplicationRecord
 
   extend ChatoMud::Mixins::Slots::Definition
+
+  before_validation :set_code, on: :create
 
   has_one :weapon_stat_template, dependent: :destroy
 
@@ -98,6 +101,10 @@ class ItemTemplate < ApplicationRecord
   def sheaths_and_quivers_must_have_an_inventory
     errors.add(:inventory_template, "is required for sheath templates") if is_sheath && !inventory_template
     errors.add(:inventory_template, "is required for quiver templates") if is_quiver && !inventory_template
+  end
+
+  def set_code
+    self.code = SecureRandom.hex if code.nil?
   end
 
 end

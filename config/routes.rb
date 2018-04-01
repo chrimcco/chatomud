@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   
   resources :items, only: [:index, :create, :update, :destroy], defaults: { format: :json }
 
+  resources :item_templates, only: [:index, :create], defaults: { format: :json }
+
 end
