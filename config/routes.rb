@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/characters/yours', defaults: { format: :json }
   post '/characters', to: 'characters#create', defaults: { format: :json }
 
-  resources :rooms, only: [:index], defaults: { format: :json }
+  resources :rooms, only: [:index, :create], defaults: { format: :json }
   
   resources :items, only: [:index, :create, :update, :destroy], defaults: { format: :json }
 

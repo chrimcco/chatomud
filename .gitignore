@@ -18,8 +18,9 @@
 !/tmp/.keep
 /.yardoc
 
-# Ignore start_dev.sh, it holds the database password for personal ease of use.
+# Ignore ease-of-use commands containing passwords
 start_dev.sh
+console.sh
 
 # Ignore Byebug command history file.
 .byebug_history
