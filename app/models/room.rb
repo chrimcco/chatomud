@@ -1,5 +1,8 @@
 class Room < ApplicationRecord
 
+  before_validation :set_default_associations, on: :create
+
+
   has_one :nr,  class_name: 'Room', foreign_key: 'sr_id',  inverse_of: :sr
 
   has_one :ner, class_name: 'Room', foreign_key: 'swr_id', inverse_of: :swr
@@ -47,5 +50,24 @@ class Room < ApplicationRecord
   has_many :furnitures
 
   has_one :inventory, as: :parent, dependent: :destroy, inverse_of: :parent
+
+  def reassign_exits
+    update_attributes(nr:  Room.find(nr_id))  unless nr_id.nil?
+    update_attributes(ner: Room.find(ner_id)) unless ner_id.nil?
+    update_attributes(er:  Room.find(er_id))  unless er_id.nil?
+    update_attributes(ser: Room.find(ser_id)) unless ser_id.nil?
+    update_attributes(sr:  Room.find(sr_id))  unless sr_id.nil?
+    update_attributes(swr: Room.find(swr_id)) unless swr_id.nil?
+    update_attributes(wr:  Room.find(wr_id))  unless wr_id.nil?
+    update_attributes(nwr: Room.find(nwr_id)) unless nwr_id.nil?
+    update_attributes(ur:  Room.find(ur_id))  unless ur_id.nil?
+    update_attributes(dr:  Room.find(dr_id))  unless dr_id.nil?
+  end
+
+  private
+
+  def set_default_associations
+    self.inventory = Inventory.new
+  end
 
 end

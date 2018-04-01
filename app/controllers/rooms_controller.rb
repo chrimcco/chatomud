@@ -13,7 +13,8 @@ class RoomsController < ApplicationController
     room = Room.new(room_params)
 
     if room.save!
-      ChatoMud::Controllers::Items::ItemController.new(Server, room)
+      room.reassign_exits
+      ChatoMud::Controllers::Rooms::RoomController.new(Server, room)
       render json: room
     else
       render json: { errors: room.errors.messages }, status: :unprocessable_entity
