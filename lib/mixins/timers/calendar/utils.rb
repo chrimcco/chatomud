@@ -101,39 +101,39 @@ module ChatoMud
           def day_name(year_day)
             case year_day
               when 0
-                full_day_name(year_day, "Yestarë", true)
+                full_day_name(year_day, "Yestare", true)
               when 1..30
-                full_day_name(year_day, "Narvinyë", false)
+                full_day_name(year_day, "Narvinye", false)
               when 31..60
-                full_day_name(year_day, "Nénimë", false)
+                full_day_name(year_day, "Nenime", false)
               when 61..90
-                full_day_name(year_day, "Súlimë", false)
+                full_day_name(year_day, "Sulime", false)
               when 91
-                full_day_name(year_day, "Tuilérë", true)
+                full_day_name(year_day, "Tuilere", true)
               when 92..121
-                full_day_name(year_day, "Víressë", false)
+                full_day_name(year_day, "Viresse", false)
               when 122..151
-                full_day_name(year_day, "Lótessë", false)
+                full_day_name(year_day, "Lotesse", false)
               when 152..181
-                full_day_name(year_day, "Nárië", false)
+                full_day_name(year_day, "Narie", false)
               when 182
-                full_day_name(year_day, "Löendë", true)
+                full_day_name(year_day, "Leende", true)
               when 183..212
-                full_day_name(year_day, "Cermië", false)
+                full_day_name(year_day, "Cermie", false)
               when 213..242
-                full_day_name(year_day, "Úrimë", false)
+                full_day_name(year_day, "Urime", false)
               when 243..272
-                full_day_name(year_day, "Yavannië", false)
+                full_day_name(year_day, "Yavannie", false)
               when 273
-                full_day_name(year_day, "Yáviérë", true)
+                full_day_name(year_day, "Yaviere", true)
               when 274..303
-                full_day_name(year_day, "Narquelië", false)
+                full_day_name(year_day, "Narquelie", false)
               when 304..333
-                full_day_name(year_day, "Hísimë", false)
+                full_day_name(year_day, "Hisime", false)
               when 334...363
-                full_day_name(year_day, "Ringarë", false)
+                full_day_name(year_day, "Ringare", false)
               when 364
-                full_day_name(year_day, "Mettarë", true)
+                full_day_name(year_day, "Mettare", true)
               else
                 raise "invalid year day"
             end

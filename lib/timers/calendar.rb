@@ -51,15 +51,14 @@ module ChatoMud
 
         ig_seconds = ((rl_time.yday * RL_SEC_PER_DAY + rl_time.hour * RL_SEC_PER_HOUR + rl_time.min * RL_SEC_PER_MINUTE + rl_time.sec) % IG_SEC_PER_YEAR) * 4
 
-        year   = IG_START_YEAR + rl_time.year - RL_START_YEAR + (rl_time.month - 1) / 3
+        year     = IG_START_YEAR + rl_time.year - RL_START_YEAR + (rl_time.month - 1) / 3
         year_day = ig_seconds / RL_SEC_PER_DAY
-        month  = month_number(year_day)
-        hour   = (ig_seconds % (year_day * RL_SEC_PER_DAY)) / RL_SEC_PER_HOUR
+        month    = month_number(year_day)
+        hour   = (ig_seconds % ((year_day + 1) * RL_SEC_PER_DAY)) / RL_SEC_PER_HOUR
         minute = (ig_seconds % (year_day * RL_SEC_PER_DAY + hour * RL_SEC_PER_HOUR)) / RL_SEC_PER_MINUTE
         second = ig_seconds % 60
 
         day_minute = hour * RL_MIN_PER_HOUR + minute
-
         ig_time = DateTime.new(rl_time.year, month, month_day(year_day), hour, minute, second)
 
         {
