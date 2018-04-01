@@ -37,11 +37,9 @@ module ChatoMud
       end
 
       def time_string
-        ig_time    = @data[:ig_time]
-        year       = @data[:year]
-        day_minute = @data[:day_minute]
+        #time    = time_from_data(@data)
 
-        "It is #{day_period_name(ig_time, day_minute)} (#{ig_time.hour}:#{ig_time.min}) on #{day_name(ig_time.yday)} of the year #{year} of the Steward's Reckoning."
+        "It is #{day_period_name(@data)} (#{@data[:hour]}:#{@data[:hminute]}) on #{day_name(@data[:yday])} of the year #{@data[:year]} of the Steward's Reckoning."
       end
 
       private
@@ -62,11 +60,15 @@ module ChatoMud
 
         ig_day_minute = ig_hour * 60 + ig_minute
 
-        ig_time = DateTime.new(rl_time.year, ig_month, month_day(ig_yday), ig_hour, ig_minute, ig_second)
         {
-          year: ig_year,
-          ig_time: ig_time,
-          day_minute: ig_day_minute
+          year:    ig_year,
+          month:   ig_month,
+          yday:    ig_yday,
+          mday:    month_day(ig_yday),
+          hour:    ig_hour,
+          hminute: ig_minute,
+          dminute: ig_day_minute,
+          second:  ig_second
         }
       end
 

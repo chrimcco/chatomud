@@ -14,14 +14,14 @@ module ChatoMud
           include Timers::Calendar::Definition
 
           def day_period_change_echo(old_data, new_data)
-            old_data_period_name = day_period_name(old_data[:ig_time], old_data[:day_minute])
-            new_data_period_name = day_period_name(new_data[:ig_time], new_data[:day_minute])
+            old_data_period_name = day_period_name(old_data)
+            new_data_period_name = day_period_name(new_data)
 
-            if old_data_period_name == "late at night" && new_data_period_name == "before dawn"
+            if old_data_period_name == "late at night"  && new_data_period_name == "before dawn"
               return :before_dawn
             end
 
-            if old_data_period_name == "before dawn" && new_data_period_name == "dawn"
+            if old_data_period_name == "before dawn"    && new_data_period_name == "dawn"
               return :dawn
             end
 
@@ -29,26 +29,37 @@ module ChatoMud
               return :dusk
             end
 
-            if old_data_period_name == "late morning" && new_data_period_name == "midday"
+            if old_data_period_name == "late morning"   && new_data_period_name == "midday"
               return :midday
             end
 
-            if old_data_period_name == "dusk" && new_data_period_name == "evening"
+            if old_data_period_name == "dusk"           && new_data_period_name == "evening"
               return :evening
             end
 
             nil
           end
 
+          def time_from_data(time_data)
+            DateTime.new(Time.new.year,
+                         time_data[:month],
+                         time_data[:mday],
+                         time_data[:hour],
+                         time_data[:hminute],
+                         time_data[:second])
+          end
+
           private
 
-          def day_period_name(ig_time, day_minute)
+          def day_period_name(time_data)
             sun_times = SunTimes.new
 
-            sunrise = sun_times.rise(ig_time, LATITUDE, LONGITUDE)
+            time = time_from_data(time_data)
+
+            sunrise = sun_times.rise(time, LATITUDE, LONGITUDE)
             sunrise_minutes = sunrise.hour * 60 + sunrise.min
 
-            sunset = sun_times.set(ig_time, LATITUDE, LONGITUDE)
+            sunset = sun_times.set(time, LATITUDE, LONGITUDE)
             sunset_minutes = sunset.hour * 60 + sunset.min
 
             morning_start = sunrise_minutes + 30
@@ -58,7 +69,7 @@ module ChatoMud
             afternoon_duration = sunset_minutes - 30 - 750
             afternoon_periods = [750 + afternoon_duration / 3, 750 + (2 * afternoon_duration) / 3]
 
-            case day_minute
+            case time_data[:dminute]
               when 0..20
                 "midnight"
               when 21..90
