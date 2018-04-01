@@ -13,8 +13,9 @@ class RoomsController < ApplicationController
     room = Room.new(room_params)
 
     if room.save!
-      room.reassign_exits
+      room.assign_connections
       ChatoMud::Controllers::Rooms::RoomController.new(Server, room)
+      Server.rooms_handler.find(room.id).reassign_connections
       render json: room
     else
       render json: { errors: room.errors.messages }, status: :unprocessable_entity

@@ -36,6 +36,10 @@ module ChatoMud
           @server.rooms_handler.add_room_controller(self)
         end
 
+        def reload_model
+          @room = Room.find(@room.id)
+        end
+
         def bye
           @server.rooms_handler.remove_room_controller(self)
         end

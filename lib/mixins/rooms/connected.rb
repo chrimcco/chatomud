@@ -13,8 +13,6 @@ module ChatoMud
         include Directions::Definition
         include Directions::Utils
 
-        # room_north, room_east, ... room_down
-        # door_north, door_east, ... door_down
         all_directions.each do |direction|
           define_method("room_#{direction}") do
             connecting_room_controller = @room.send(abbreviature(direction) + "r")
@@ -26,6 +24,13 @@ module ChatoMud
             connecting_door_controller = @room.send(abbreviature(direction) + "d")
             return nil if !connecting_door_controller
             @server.doors_handler.find(connecting_door_controller.id)
+          end
+        end
+
+        def reassign_connections
+          reload_model
+          all_directions.each do |direction|
+            send("room_#{direction}").reload_model unless send("room_#{direction}").nil?
           end
         end
 

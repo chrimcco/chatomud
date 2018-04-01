@@ -51,7 +51,7 @@ class Room < ApplicationRecord
 
   has_one :inventory, as: :parent, dependent: :destroy, inverse_of: :parent
 
-  def reassign_exits
+  def assign_connections
     update_attributes(nr:  Room.find(nr_id))  unless nr_id.nil?
     update_attributes(ner: Room.find(ner_id)) unless ner_id.nil?
     update_attributes(er:  Room.find(er_id))  unless er_id.nil?
