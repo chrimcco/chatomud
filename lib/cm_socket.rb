@@ -4,6 +4,7 @@ module ChatoMud
 
     def rx
       input = gets
+      input = input.encode('UTF-8', 'binary', invalid: :replace, undef: :replace, replace: '')
       return [:bad, nil] unless input
       return [:ok, input.strip!]
     end
