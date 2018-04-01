@@ -41,7 +41,7 @@ module ChatoMud
         year       = @data[:year]
         day_minute = @data[:day_minute]
 
-        "It is #{day_period_name(ig_time, day_minute)} (#{ig_time.hour}:#{ig_time.min}) on #{day_name(ig_time.yday - 1)} of the year #{year} of the Steward's Reckoning."
+        "It is #{day_period_name(ig_time, day_minute)} (#{ig_time.hour}:#{ig_time.min}) on #{day_name(ig_time.yday)} of the year #{year} of the Steward's Reckoning."
       end
 
       private
@@ -49,22 +49,24 @@ module ChatoMud
       def update
         rl_time = Time.new
 
-        ig_seconds = ((rl_time.yday * RL_SEC_PER_DAY + rl_time.hour * RL_SEC_PER_HOUR + rl_time.min * RL_SEC_PER_MINUTE + rl_time.sec) % IG_SEC_PER_YEAR) * 4
+        rl_seconds = rl_time.yday * SECS_PER_RL_DAY + rl_time.hour * SECS_PER_RL_HOUR + rl_time.min * SECS_PER_RL_MINUTE + rl_time.sec
+        ig_seconds = rl_seconds % SECS_PER_IG_YEAR
 
-        year     = IG_START_YEAR + rl_time.year - RL_START_YEAR + (rl_time.month - 1) / 3
-        year_day = ig_seconds / RL_SEC_PER_DAY
-        month    = month_number(year_day)
-        hour   = (ig_seconds % ((year_day + 1) * RL_SEC_PER_DAY)) / RL_SEC_PER_HOUR
-        minute = (ig_seconds % (year_day * RL_SEC_PER_DAY + hour * RL_SEC_PER_HOUR)) / RL_SEC_PER_MINUTE
-        second = ig_seconds % 60
+        ig_year  = IG_START_YEAR + (rl_time.year - RL_START_YEAR) * 4 + (rl_time.month) / 3 + 1
+        ig_yday  = (ig_seconds / SECS_PER_IG_DAY) + 1
+        ig_month = month_number(ig_yday)
 
-        day_minute = hour * RL_MIN_PER_HOUR + minute
-        ig_time = DateTime.new(rl_time.year, month, month_day(year_day), hour, minute, second)
+        ig_hour   = (ig_seconds % SECS_PER_IG_DAY)  / SECS_PER_IG_HOUR
+        ig_minute = (ig_seconds % SECS_PER_IG_HOUR) / SECS_PER_IG_MINUTE
+        ig_second = ig_seconds  % SECS_PER_IG_MINUTE
 
+        ig_day_minute = ig_hour * 60 + ig_minute
+
+        ig_time = DateTime.new(rl_time.year, ig_month, month_day(ig_yday), ig_hour, ig_minute, ig_second)
         {
-          year: year,
+          year: ig_year,
           ig_time: ig_time,
-          day_minute: day_minute
+          day_minute: ig_day_minute
         }
       end
 

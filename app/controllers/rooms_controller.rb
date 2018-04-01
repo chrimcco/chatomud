@@ -13,6 +13,7 @@ class RoomsController < ApplicationController
     room = Room.new(room_params)
 
     if room.save!
+      ChatoMud::Controllers::Items::ItemController.new(Server, room)
       render json: room
     else
       render json: { errors: room.errors.messages }, status: :unprocessable_entity
@@ -28,7 +29,17 @@ class RoomsController < ApplicationController
   def room_params
     params.require(:room).permit(
       :title,
-      :description
+      :description,
+      :nr_id,
+      :ner_id,
+      :er_id,
+      :ser_id,
+      :sr_id,
+      :swr_id,
+      :wr_id,
+      :nwr_id,
+      :ur_id,
+      :dr_id
     )
   end
 

@@ -46,10 +46,10 @@ module ChatoMud
             sun_times = SunTimes.new
 
             sunrise = sun_times.rise(ig_time, LATITUDE, LONGITUDE)
-            sunrise_minutes = sunrise.hour * RL_MIN_PER_HOUR + sunrise.min
+            sunrise_minutes = sunrise.hour * 60 + sunrise.min
 
             sunset = sun_times.set(ig_time, LATITUDE, LONGITUDE)
-            sunset_minutes = sunset.hour * RL_MIN_PER_HOUR + sunset.min
+            sunset_minutes = sunset.hour * 60 + sunset.min
 
             morning_start = sunrise_minutes + 30
             morning_duration = 690 - morning_start
@@ -100,39 +100,39 @@ module ChatoMud
 
           def day_name(year_day)
             case year_day
-              when 0
+              when 1
                 full_day_name(year_day, "Yestare", true)
-              when 1..30
+              when 2..31
                 full_day_name(year_day, "Narvinye", false)
-              when 31..60
+              when 32..61
                 full_day_name(year_day, "Nenime", false)
-              when 61..90
+              when 62..91
                 full_day_name(year_day, "Sulime", false)
-              when 91
+              when 92
                 full_day_name(year_day, "Tuilere", true)
-              when 92..121
+              when 93..122
                 full_day_name(year_day, "Viresse", false)
-              when 122..151
+              when 123..152
                 full_day_name(year_day, "Lotesse", false)
-              when 152..181
+              when 153..182
                 full_day_name(year_day, "Narie", false)
-              when 182
+              when 183
                 full_day_name(year_day, "Leende", true)
-              when 183..212
+              when 184..213
                 full_day_name(year_day, "Cermie", false)
-              when 213..242
+              when 214..243
                 full_day_name(year_day, "Urime", false)
-              when 243..272
+              when 244..273
                 full_day_name(year_day, "Yavannie", false)
-              when 273
+              when 274
                 full_day_name(year_day, "Yaviere", true)
-              when 274..303
+              when 275..304
                 full_day_name(year_day, "Narquelie", false)
-              when 304..333
+              when 305..334
                 full_day_name(year_day, "Hisime", false)
-              when 334...363
+              when 335...364
                 full_day_name(year_day, "Ringare", false)
-              when 364
+              when 365
                 full_day_name(year_day, "Mettare", true)
               else
                 raise "invalid year day"
@@ -146,47 +146,47 @@ module ChatoMud
           end
 
           def month_day(year_day)
-            return 1 if [0, 91, 182, 273, 364].include?(year_day)
+            return 1 if [1, 92, 183, 274, 365].include?(year_day)
 
-            return year_day -   0 if year_day < 31
-            return year_day -  30 if year_day < 61
-            return year_day -  60 if year_day <  91
-            return year_day -  91 if year_day < 122
-            return year_day - 121 if year_day < 152
-            return year_day - 151 if year_day < 182
-            return year_day - 182 if year_day < 213
-            return year_day - 212 if year_day < 243
-            return year_day - 242 if year_day < 273
-            return year_day - 273 if year_day < 304
-            return year_day - 303 if year_day < 334
-            return year_day - 333
+            return year_day -   1 if year_day <  31
+            return year_day -  31 if year_day <  61
+            return year_day -  61 if year_day <  91
+            return year_day -  92 if year_day < 122
+            return year_day - 122 if year_day < 152
+            return year_day - 152 if year_day < 182
+            return year_day - 183 if year_day < 213
+            return year_day - 213 if year_day < 243
+            return year_day - 243 if year_day < 273
+            return year_day - 274 if year_day < 304
+            return year_day - 304 if year_day < 334
+            return year_day - 334
           end
 
           def month_number(year_day)
             case year_day
-              when 0..30
+              when 1..31
                 1
-              when 31..60
+              when 32..61
                 2
-              when 61..90
+              when 62..91
                 3
-              when 91..121
+              when 92..122
                 4
-              when 122..151
+              when 123..152
                 5
-              when 152..181
+              when 153..182
                 6
-              when 182..212
+              when 183..213
                 7
-              when 213..242
+              when 214..243
                 8
-              when 243..272
+              when 244..273
                 9
-              when 273..303
+              when 274..304
                 10
-              when 304..333
+              when 305..334
                 11
-              when 334..364
+              when 335..365
                 12
               else
                 raise "invalid year day"

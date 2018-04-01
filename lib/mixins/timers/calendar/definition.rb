@@ -12,21 +12,18 @@ module ChatoMud
           LATITUDE  ||= 51.7520
           LONGITUDE ||= 1.2577
 
-          RL_SEC_PER_MINUTE ||= 60
-
-          RL_MIN_PER_HOUR ||= 60
-
-          RL_SEC_PER_HOUR ||= RL_SEC_PER_MINUTE * RL_MIN_PER_HOUR
-
-          RL_SEC_PER_DAY ||= RL_SEC_PER_HOUR * 24
-
+          SECS_PER_RL_MINUTE ||= 60
+          SECS_PER_RL_HOUR   ||= SECS_PER_RL_MINUTE * 60
+          SECS_PER_RL_DAY    ||= SECS_PER_RL_HOUR * 24
+          SECS_PER_RL_YEAR   ||= SECS_PER_RL_DAY * 365
 
           RL_START_YEAR ||= 2017
-
-
-          IG_SEC_PER_YEAR ||= ((365 / 4.0) * 24 * 60 * 60).round
-
           IG_START_YEAR ||= 2470 # Steward's Reckoning, Third Age.
+
+          SECS_PER_IG_MINUTE ||= 15
+          SECS_PER_IG_HOUR   ||= SECS_PER_IG_MINUTE * 60
+          SECS_PER_IG_DAY    ||= SECS_PER_IG_HOUR * 24
+          SECS_PER_IG_YEAR   ||= SECS_PER_IG_DAY * 365
 
           def all_day_portions
             [

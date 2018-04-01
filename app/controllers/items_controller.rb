@@ -11,15 +11,7 @@ class ItemsController < ApplicationController
     item.slot = :void
     item.containing_inventory = Room.second.inventory
     item.item_template = ItemTemplate.find_by_code('prest_01')
-    # item = Item.new(
-    #   short_desc: 'a shiny diamond',
-    #   long_desc: 'A shiny diamond belongs to noone on the ground.',
-    #   full_desc: 'Multifaceted and pretty.',
-    #   kwords: ['diamond', 'shiny'],
-    #   slot: :void,
-    #   containing_inventory: Room.second.inventory,
-    #   item_template: ItemTemplate.find_by_code('prest_01')
-    # )
+
     if item.save!
       ChatoMud::Controllers::Items::ItemController.new(Server, item, Server.rooms_handler.find(Room.second.id).inventory_controller)
       render json: item
