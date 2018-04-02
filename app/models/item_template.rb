@@ -61,6 +61,8 @@ class ItemTemplate < ApplicationRecord
 
   accepts_nested_attributes_for :inventory_template
 
+  accepts_nested_attributes_for :weapon_stat_template
+
   private
 
   def is_weapon_template?

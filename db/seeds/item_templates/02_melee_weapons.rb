@@ -30,7 +30,7 @@ ItemTemplate.create!(
 ItemTemplate.create!(
   short_desc: 'a steel greatsword',
   long_desc: 'A steel greatsword has been left here.',
-  full_desc: 'Huge and sharp. Most likely you will need to hands to wield this cumbersome weapon.',
+  full_desc: 'Huge and sharp. Most likely you will need two hands to wield this cumbersome weapon.',
   kwords: ['steel', 'greatsword'],
   code: 'weap_05',
   weapon_stat_template: WeaponStatTemplate.new(

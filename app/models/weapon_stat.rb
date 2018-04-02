@@ -4,13 +4,15 @@ class WeaponStat < ApplicationRecord
 
   extend ChatoMud::Mixins::Characters::SkillSet::Definition
 
+  extend ChatoMud::Mixins::Grips::Definition  
+
   has_one :melee_stat, dependent: :destroy
 
   has_one :ranged_stat, dependent: :destroy
 
   belongs_to :item
 
-  enum grip: [:one_handed, :two_handed, :both]
+  enum grip: all_grips
 
   enum skill: all_weapon_skills
 

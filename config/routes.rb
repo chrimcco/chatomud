@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get '/system/information', defaults: { format: :json }
+  get '/system/info', defaults: { format: :json }
 
   #resources :players, only: [:show, :create, :destroy], defaults: { format: :json }
   get '/players', to: 'players#show', defaults: { format: :json }
@@ -15,5 +15,7 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :create, :update, :destroy], defaults: { format: :json }
 
   resources :item_templates, only: [:index, :create], defaults: { format: :json }
+
+  get '/weapon_info/info', defaults: { format: :json }
 
 end

@@ -15,6 +15,8 @@ class InventoryTemplate < ApplicationRecord
   validates_associated :lid_template, :inventory_template
 
 
+  accepts_nested_attributes_for :lid_template
+
   def belongs_to_item_template?
     parent_type == 'ItemTemplate'
   end

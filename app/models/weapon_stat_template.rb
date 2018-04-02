@@ -4,13 +4,15 @@ class WeaponStatTemplate < ApplicationRecord
 
   extend ChatoMud::Mixins::Characters::SkillSet::Definition
 
+  extend ChatoMud::Mixins::Grips::Definition
+
   has_one :melee_stat_template, dependent: :destroy
 
   has_one :ranged_stat_template, dependent: :destroy
 
   belongs_to :item_template
 
-  enum grip: [:one_handed, :two_handed, :both]
+  enum grip: all_grips
 
   enum skill: all_weapon_skills
 
@@ -22,6 +24,10 @@ class WeaponStatTemplate < ApplicationRecord
 
   validates_associated :melee_stat_template, :ranged_stat_template
 
+
+  accepts_nested_attributes_for :melee_stat_template
+
+  accepts_nested_attributes_for :ranged_stat_template
 
   private
 

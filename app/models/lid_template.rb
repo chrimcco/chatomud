@@ -10,6 +10,9 @@ class LidTemplate < ApplicationRecord
 
   validates_associated :lock_template
 
+
+  accepts_nested_attributes_for :lock_template
+
   private
 
   def can_only_belong_to_item_or_furniture_template_inventory

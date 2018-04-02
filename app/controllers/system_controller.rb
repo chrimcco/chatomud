@@ -1,6 +1,6 @@
 class SystemController < ApplicationController
 
-  def information
+  def info
     render json: {
       ruby_version: RUBY_VERSION,
       rails_version: Rails.version,

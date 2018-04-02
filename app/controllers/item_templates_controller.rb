@@ -29,10 +29,23 @@ class ItemTemplatesController < ApplicationController
       :short_desc,
       :long_desc,
       :full_desc,
-      inventory_template_attributes: [
-        :parent_type
-      ],
       kwords: [],
+      inventory_template_attributes: [
+        :parent_type,
+        lid_template_attributes: [
+          :parent_type,
+          lock_template_attributes: [
+            :parent_type
+          ]
+        ]
+      ],
+      weapon_stat_template_attributes: [
+        :grip,
+        :skill,
+        melee_stat_template_attributes: [
+          :sheathed_desc
+        ]
+      ]
     )
   end
 

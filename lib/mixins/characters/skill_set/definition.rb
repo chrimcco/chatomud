@@ -65,8 +65,8 @@ module ChatoMud
             all_skills + all_skill_categories
           end
 
-          def all_weapon_skills
-            [
+          def all_melee_weapon_skills
+[
               :dagger,
               :shortsword,
 
@@ -97,12 +97,20 @@ module ChatoMud
 
               :lance,
 
+              :brawl
+            ]
+          end
+
+          def all_ranged_weapon_skills
+            [
               :shortbow,
               :longbow,
               :crossbow,
-
-              :brawl
             ]
+          end
+
+          def all_weapon_skills
+            all_melee_weapon_skills + all_ranged_weapon_skills
           end
 
           def all_armor_skills
