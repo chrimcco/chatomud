@@ -38,8 +38,7 @@ module ChatoMud
 
       def time_string
         #time    = time_from_data(@data)
-
-        "It is #{day_period_name(@data)} (#{@data[:hour]}:#{@data[:hminute]}) on #{day_name(@data[:yday])} of the year #{@data[:year]} of the Steward's Reckoning."
+        "It is #{day_period_name(@data)} (#{'%02d' % @data[:hour]}:#{'%02d' % @data[:hminute]}) on #{day_name(@data[:yday])} of the year #{@data[:year]} of the Steward's Reckoning."
       end
 
       private
